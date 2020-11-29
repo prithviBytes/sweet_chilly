@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Sweet Chilly - Movies|Ratings|More</title>
+	<link rel = "icon" type = "image/png" href = "https://png.pngtree.com/png-vector/20190726/ourmid/pngtree-red-chilli-vector-png-png-image_1610006.jpg">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/app2.css">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body>
+<h1>Sweet Chilly  <i class="fas fa-pepper-hot"></i></h1>
+<div id="container">
+	<% if(data == null){ %>
+	<h1 id="apology">Sorry Couldnt Find the movie&nbsp;&nbsp;<i class="far fa-sad-tear"></i></h1>
+		  <div class="row justify-content-center mb-5">
+			 <form method="GET" action="/moogle">
+			 <button id="homepage">Search Again&nbsp;<i class="fas fa-binoculars"></i></button>
+			 </form>
+	   </div>
+	<% }else{ %>
+	<ul>
+	<% data.forEach(function(movie) { %>
+		<div class="row justify-content-center">
+		<li><a href="/moogle/results/detail?id=<%= movie["imdbID"] %>"><%= movie["Title"] %></a><br>
+		</div>
+	<% }) %>
+	</ul>
+	<% } %>
+</div>
+<%- include("partials/footer.ejs")%>
